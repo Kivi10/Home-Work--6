@@ -7,13 +7,19 @@ int Promt(string? message)
     return int.Parse(Console.ReadLine());
 }
 
-int[] CreateArray(int num1, int num2, int num3, int num4)
+int[] CreateArray(string msg)
 {
-    int[] array = new int[4];
-    array[0] = num1;
-    array[1] = num2;
-    array[2] = num3;
-    array[3] = num4;
+    int size = Promt("Введите число, длину массива ");
+    int[] array = new int[size];
+    return array;
+}
+
+int[] FillArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = Promt("Введите число ");
+    }
     return array;
 }
 
@@ -30,11 +36,18 @@ void CheckArray(int[] array)
     System.Console.WriteLine("Количество чисел больше 0 = " + count);
 }
 
-int num1 = Promt("Введите число 1 ");
-int num2 = Promt("Введите число 2 ");
-int num3 = Promt("Введите число 3 ");
-int num4 = Promt("Введите число 4 ");
+void PrintArray(int[] array)
+{
+    foreach (var item in array)
+    {
+        System.Console.Write(item + ";");
+    }
+}
 
-int[] myArray = CreateArray(num1, num2, num3, num4);
+int [] myArray = CreateArray("");
 
+FillArray(myArray);
+System.Console.WriteLine("В заданном массиве: ");
+PrintArray(myArray);
+System.Console.WriteLine();
 CheckArray(myArray);
